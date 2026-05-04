@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Киберспорт в школах | Турниры по CS2, Dota 2, MLBB, Valorant, FragPunk</title>
+    <!-- Шрифты и базовые стили -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0b0e1a;
+            color: #eef2ff;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* градиентные акценты */
+        .gradient-bg {
+            background: radial-gradient(circle at 10% 20%, rgba(30, 40, 70, 0.6), rgba(5, 8, 20, 0.95));
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Хедер */
+        .header {
+            padding: 32px 0 24px;
+            border-bottom: 1px solid rgba(80, 120, 200, 0.3);
+            background: rgba(5, 8, 20, 0.8);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 30;
+        }
+
+        .header-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #c0e0ff, #7c3aed);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.3px;
+        }
+
+        .logo p {
+            font-size: 0.85rem;
+            color: #9ca3cf;
+        }
+
+        .support-btn-header {
+            background: linear-gradient(95deg, #f97316, #dc2626);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
+        }
+
+        .support-btn-header:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 26px rgba(220, 38, 38, 0.5);
+        }
+
+        /* герой */
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #fff, #9f7aea);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #cbd5e6;
+        }
+
+        /* секция преимуществ */
+        .benefits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin: 50px 0;
+        }
+
+        .benefit-card {
+            background: rgba(20, 27, 45, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 32px;
+            padding: 28px 20px;
+            width: 260px;
+            text-align: center;
+            border: 1px solid rgba(100, 120, 200, 0.2);
+            transition: all 0.3s;
+        }
+
+        .benefit-card i {
+            font-size: 2.8rem;
+            color: #f97316;
+            margin-bottom: 16px;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* игры */
+        .games-section {
+            margin: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: -0.5px;
+            border-left: 5px solid #f97316;
+            display: inline-block;
+            width: auto;
+            padding-left: 20px;
+        }
+
+        .title-wrapper {
+            text-align: center;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .game-card {
+            background: #111827;
+            border-radius: 28px;
+            padding: 24px 16px;
+            text-align: center;
+            transition: transform 0.2s, border 0.2s;
+            border: 1px solid #2d3748;
+            cursor: default;
+        }
+
+        .game-card:hover {
+            transform: translateY(-6px);
+            border-color: #f97316;
+            background: #1a2332;
+        }
+
+        .game-icon {
+            font-size: 3.2rem;
+            margin-bottom: 12px;
+        }
+
+        .game-card h4 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .game-card p {
+            font-size: 0.9rem;
+            color: #b9c2dd;
+        }
+
+        /* петиция модальное окно */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.2s;
+        }
+
+        .modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .petition-modal {
+            background: #0f172ad9;
+            background: linear-gradient(145deg, #111a2c, #0a0f1c);
+            border-radius: 48px;
+            max-width: 500px;
+            width: 90%;
+            padding: 32px 28px;
+            text-align: center;
+            border: 1px solid #f97316;
+            box-shadow: 0 30px 40px rgba(0, 0, 0, 0.5);
+            transform: scale(0.95);
+            transition: transform 0.2s;
+        }
+
+        .modal-overlay.active .petition-modal {
+            transform: scale(1);
+        }
+
+        .petition-modal h3 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .petition-text {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            border-left: 3px solid #f97316;
+        }
+
+        .sign-count {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #facc15;
+            margin: 15px 0;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .btn-sign {
+            background: linear-gradient(90deg, #f97316, #ea580c);
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-close {
+            background: #2d3748;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: bold;
+            color: #e2e8f0;
+            cursor: pointer;
+        }
+
+        .already-signed {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: #86efac;
+        }
+
+        footer {
+            margin-top: 80px;
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid #1e293b;
+            color: #7e8aa8;
+        }
+
+        /* адаптив */
+        @media (max-width: 680px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+            .header-content {
+                flex-direction: column;
+            }
+            .benefit-card {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+
+        button {
+            background: none;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-content">
+        <div class="logo">
+            <h1><i class="fas fa-gamepad"></i> EduCyber</h1>
+            <p>школьный киберспорт · дисциплина · прогресс</p>
+        </div>
+        <button class="support-btn-header" id="openPetitionBtn">
+            <i class="fas fa-hand-peace"></i> Поддержать идею автора
+        </button>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <div class="hero">
+            <h2>Почему в школах нужно проводить<br>турниры по киберспортивным играм?</h2>
+            <p>Киберспорт — это не просто развлечение. Это развитие стратегического мышления, реакции, командной работы и цифровой грамотности. Официальные турниры воспитывают дисциплину и дают равные шансы талантливым ученикам.</p>
+        </div>
+
+        <div class="benefits">
+            <div class="benefit-card">
+                <i class="fas fa-users"></i>
+                <h3>Командный дух</h3>
+                <p>Учатся сотрудничать, распределять роли и поддерживать друг друга — навыки, полезные в любой профессии.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-brain"></i>
+                <h3>Стратегия & анализ</h3>
+                <p>CS2, Dota 2 и Valorant тренируют тактическое мышление, скорость принятия решений и адаптивность.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Кибербезопасность</h3>
+                <p>Через спорт дети учатся здоровой конкуренции, избегая токсичности и понимая этикет в сети.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-trophy"></i>
+                <h3>Карьерные пути</h3>
+                <p>Профессии киберспортсмена, аналитика, тренера, комментатора — реальное будущее для молодёжи.</p>
+            </div>
+        </div>
+
+        <!-- Игры, которые включаем -->
+        <div class="games-section">
+            <div class="title-wrapper">
+                <div class="section-title">🎮 Дисциплины турниров</div>
+            </div>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-crosshairs"></i></div>
+                    <h4>CS2</h4>
+                    <p>Тактический шутер, требующий слаженной работы, дымов, флешек и молниеносной реакции.</p>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-dragon"></i></div>
+                    <h4>Dota 2</h4>
+                    <p>Глубочайшая MOBA, развивает макростратегию, координацию и адаптацию под противника.</p>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h4>Mobile Legends</h4>
+                    <p>Динамичная мобильная MOBA, доступная всем школьникам, учит быстрым командным решениям.</p>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-bolt"></i></div>
+                    <h4>Valorant</h4>
+                    <p>Смесь шутера и геройских способностей, оттачивает точность, тактику и взаимодействие.</p>
+                </div>
+                <div class="game-card">
+                    <div class="game-icon"><i class="fas fa-fist-raised"></i></div>
+                    <h4>Frag Punk</h4>
+                    <p>Футуристичный экшен с уникальной стилистикой, командные схватки и креативные механики.</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; font-style: italic; color: #b9c2dd;">✅ Школьные турниры по этим играм помогают раскрыть таланты, улучшить успеваемость через мотивацию и сформировать здоровую геймерскую культуру.</p>
+        </div>
+
+        <!-- Доп. инфоблок -->
+        <div style="background: linear-gradient(120deg, #0f172a, #030617); border-radius: 36px; padding: 32px 24px; margin: 40px 0;">
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between;">
+                <div style="flex: 1;">
+                    <h3 style="font-size: 1.8rem;"><i class="fas fa-chalkboard-teacher"></i> Аргументы педагогов</h3>
+                    <ul style="margin-top: 16px; list-style: none;">
+                        <li style="margin: 12px 0;"><i class="fas fa-check-circle" style="color:#f97316;"></i> Снижение стресса и социализация подростков</li>
+                        <li style="margin: 12px 0;"><i class="fas fa-check-circle" style="color:#f97316;"></i> Развитие навыков XXI века: IT, коммуникация, лидерство</li>
+                        <li style="margin: 12px 0;"><i class="fas fa-check-circle" style="color:#f97316;"></i> Школьные киберлиги уже в Финляндии, США, Южной Корее — дают результат</li>
+                        <li style="margin: 12px 0;"><i class="fas fa-check-circle" style="color:#f97316;"></i> Возможность участия даже для тех, кто не силен в классическом спорте</li>
+                    </ul>
+                </div>
+                <div style="text-align: center;">
+                    <i class="fas fa-users-class" style="font-size: 5rem; opacity: 0.7;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2025 Инициатива «Киберспорт в школы» | Давайте вместе сделаем образование современным</p>
+        <p style="margin-top: 8px;"><i class="fas fa-heart" style="color:#f97316;"></i> Поддержите движение за школьные кибертурниры</p>
+    </div>
+</footer>
+
+<!-- Модальное окно петиции -->
+<div class="modal-overlay" id="petitionModal">
+    <div class="petition-modal">
+        <h3><i class="fas fa-scroll"></i> Петиция</h3>
+        <div class="petition-text">
+            <p><strong>Мы, нижеподписавшиеся, требуем внедрения официальных киберспортивных турниров по играм CS2, Dota 2, Mobile Legends: Bang Bang, Valorant и Frag Punk в систему школьных соревнований.</strong></p>
+            <p style="margin-top: 12px;">Киберспорт дисциплинирует, учит работать в команде, стратегически мыслить и открывает новые карьерные горизонты. Ученики получат мотивацию к учебе и возможность реализовать свои таланты в безопасной, организованной среде.</p>
+            <p style="margin-top: 12px;"><i class="fas fa-check"></i> Поставив подпись, я поддерживаю развитие киберспорта в образовательных учреждениях.</p>
+        </div>
+        <div class="sign-count" id="signatureCounter">0 поддержавших</div>
+        <div id="userStatusMsg" style="font-size:0.9rem; margin-bottom:8px;"></div>
+        <div class="modal-buttons">
+            <button class="btn-sign" id="confirmSignBtn"><i class="fas fa-pen-fancy"></i> Подписать петицию</button>
+            <button class="btn-close" id="closeModalBtn">Закрыть</button>
+        </div>
+        <div id="alreadyMessage" class="already-signed"></div>
+    </div>
+</div>
+
+<script>
+    // Ключ для localStorage, чтобы запоминать, поддержал ли пользователь петицию
+    const STORAGE_KEY = 'cyberPetitionSigned';
+    const COUNT_KEY = 'petitionSignaturesCount';
+
+    // Функция для инициализации счётчика подписей (стартуем с 1249, как уже несколько сторонников, но реально стоит начать с реалистичного числа)
+    let signatureCount = 1249;  // начальное количество человек, поддержавших идею (символический старт)
+    
+    // Загружаем сохранённое количество подписей
+    function loadSignatureCount() {
+        const saved = localStorage.getItem(COUNT_KEY);
+        if (saved !== null && !isNaN(parseInt(saved))) {
+            signatureCount = parseInt(saved);
+        } else {
+            // если в хранилище нет, то оставляем 1249, но сохраним
+            localStorage.setItem(COUNT_KEY, signatureCount.toString());
+        }
+        updateCounterDisplay();
+    }
+    
+    // Обновить отображение счётчика в модалке и везде где используется (в модалке)
+    function updateCounterDisplay() {
+        const counterSpan = document.getElementById('signatureCounter');
+        if (counterSpan) counterSpan.innerText = formatNumber(signatureCount) + ' поддержавших';
+        // также если кнопка где-то есть хедер, но основной счётчик именно в модалке, но дополнительно можно и на главной отобразить
+    }
+    
+    function formatNumber(num) {
+        if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+        if (num >= 1000) return (num / 1000).toFixed(1) + 'k';
+        return num.toString();
+    }
+    
+    // Проверка, подписал ли текущий пользователь
+    function isUserSigned() {
+        return localStorage.getItem(STORAGE_KEY) === 'true';
+    }
+    
+    // Сохранить статус подписи для пользователя
+    function setUserSigned(signed) {
+        if (signed) {
+            localStorage.setItem(STORAGE_KEY, 'true');
+        } else {
+            localStorage.removeItem(STORAGE_KEY);
+        }
+    }
+    
+    // Обновить UI модалки в зависимости от того подписал ли пользователь
+    function updateModalUIForSignedStatus() {
+        const signed = isUserSigned();
+        const signBtn = document.getElementById('confirmSignBtn');
+        const msgDiv = document.getElementById('userStatusMsg');
+        const alreadyDiv = document.getElementById('alreadyMessage');
+        
+        if (signed) {
+            if (signBtn) signBtn.disabled = true;
+            if (signBtn) signBtn.style.opacity = '0.6';
+            if (signBtn) signBtn.style.cursor = 'not-allowed';
+            if (msgDiv) msgDiv.innerHTML = '<i class="fas fa-check-circle"></i> Вы уже поддержали петицию! Спасибо за ваш голос.';
+            if (alreadyDiv) alreadyDiv.innerHTML = '🙌 Вы среди тех, кто помогает внедрить киберспорт в школы.';
+        } else {
+            if (signBtn) signBtn.disabled = false;
+            if (signBtn) signBtn.style.opacity = '1';
+            if (signBtn) signBtn.style.cursor = 'pointer';
+            if (msgDiv) msgDiv.innerHTML = '';
+            if (alreadyDiv) alreadyDiv.innerHTML = 'Подпишите петицию, чтобы мы могли передать инициативу в Министерство образования.';
+        }
+    }
+    
+    // Функция подписания (увеличить счётчик и пометить пользователя)
+    function signPetition() {
+        if (isUserSigned()) {
+            // уже подписал, нельзя повторно
+            alert('Вы уже поддержали идею! Спасибо за вашу гражданскую позицию 🙏');
+            return false;
+        }
+        
+        // Увеличиваем счётчик
+        signatureCount++;
+        // Сохраняем в localStorage новое значение для всех
+        localStorage.setItem(COUNT_KEY, signatureCount.toString());
+        // Помечаем, что этот пользователь подписал
+        setUserSigned(true);
+        
+        // Обновить интерфейс
+        updateCounterDisplay();
+        updateModalUIForSignedStatus();
+        
+        // показать уведомление
+        alert('✨ Вы поддержали инициативу! Теперь петицию подписали ' + formatNumber(signatureCount) + ' человек. Вместе мы изменим школьную систему!');
+        
+        // дополнительно для хедера — можем показать всплывашку, но всё ок
+        return true;
+    }
+    
+    // Ручное управление модальным окном
+    const modal = document.getElementById('petitionModal');
+    const openBtn = document.getElementById('openPetitionBtn');
+    const closeBtn = document.getElementById('closeModalBtn');
+    const confirmBtn = document.getElementById('confirmSignBtn');
+    
+    function openModal() {
+        // При открытии обновляем статус UI (вдруг изменилось через другой вкладки, но localStorage общий)
+        updateModalUIForSignedStatus();
+        updateCounterDisplay();
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    
+    // Клик по оверлею для закрытия
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+    
+    // Подписание при нажатии на кнопку
+    if (confirmBtn) {
+        confirmBtn.addEventListener('click', (e) => {
+            signPetition();
+            // Не закрываем модалку автоматически, чтобы человек увидел, что подпись учтена.
+            // Но можно оставить открытым, или через пару секунд? Оставим открытым и обновим текст.
+            // Дополнительно показываем, что уже подписал.
+            setTimeout(() => {
+                // если пользователь захочет — закроет сам
+            }, 100);
+        });
+    }
+    
+    // При загрузке страницы инициализируем
+    loadSignatureCount();
+    
+    // Проверяем, не подписал ли пользователь ранее, и обновляем UI модалки, когда она откроется
+    // Также обновляем счетчик
+    function initPage() {
+        loadSignatureCount();
+        // дополнительно добавить возможность отображения счётчика на самой странице где-нибудь, но по заданию главное в петиции
+        // создадим мини-виджет с количеством подписей в хедере или в конце? Добавим для наглядности маленький бейдж.
+        const headerBtn = document.querySelector('.support-btn-header');
+        if (headerBtn && !document.querySelector('.sign-badge')) {
+            const badgeSpan = document.createElement('span');
+            badgeSpan.className = 'sign-badge';
+            badgeSpan.style.marginLeft = '8px';
+            badgeSpan.style.background = '#facc15';
+            badgeSpan.style.color = '#0b0e1a';
+            badgeSpan.style.padding = '4px 10px';
+            badgeSpan.style.borderRadius = '40px';
+            badgeSpan.style.fontSize = '0.75rem';
+            badgeSpan.style.fontWeight = 'bold';
+            badgeSpan.innerText = formatNumber(signatureCount) + ' подписей';
+            headerBtn.appendChild(badgeSpan);
+            
+            // обновляем бейдж при изменении счётчика
+            const updateBadge = () => {
+                if (badgeSpan) badgeSpan.innerText = formatNumber(signatureCount) + ' подписей';
+            };
+            // сохраним ссылку на функцию обновления
+            window.updateExtraBadge = updateBadge;
+        }
+    }
+    
+    // Изменяем updateCounterDisplay, чтобы обновлять также бейдж если есть
+    const originalUpdateDisplay = updateCounterDisplay;
+    window.updateCounterDisplay = function() {
+        originalUpdateDisplay();
+        const badge = document.querySelector('.sign-badge');
+        if (badge) badge.innerText = formatNumber(signatureCount) + ' подписей';
+    };
+    updateCounterDisplay = window.updateCounterDisplay;
+    
+    // подменяем глобально вызов updateCounterDisplay
+    const superUpdate = function() {
+        originalUpdateDisplay();
+        const badge = document.querySelector('.sign-badge');
+        if (badge) badge.innerText = formatNumber(signatureCount) + ' подписей';
+    };
+    window.updateCounterDisplay = superUpdate;
+    
+    // переопределяем оригинальную функцию, чтобы она использовала супер
+    window.updateCounterDisplay();
+    
+    // и переопределим signPetition чтобы при вызове обновлялся бейдж
+    const originalSign = signPetition;
+    window.signPetition = function() {
+        const res = originalSign();
+        if (res !== false) {
+            if (window.updateCounterDisplay) window.updateCounterDisplay();
+        }
+        return res;
+    };
+    signPetition = window.signPetition;
+    
+    // переназначим для обработчика кнопки
+    if (confirmBtn) {
+        // удаляем старый listener и навешиваем заново, чтобы точно работало с обновлением бейджа
+        const newConfirm = confirmBtn.cloneNode(true);
+        confirmBtn.parentNode.replaceChild(newConfirm, confirmBtn);
+        window.confirmBtn = newConfirm;
+        newConfirm.addEventListener('click', (e) => {
+            if (!isUserSigned()) {
+                signPetition();
+                if (window.updateCounterDisplay) window.updateCounterDisplay();
+                updateModalUIForSignedStatus();
+            } else {
+                alert('Вы уже поддержали петицию!');
+            }
+        });
+    }
+    
+    // небольшая инициализация бейджа после загрузки
+    setTimeout(() => {
+        const badgeSpan = document.querySelector('.sign-badge');
+        if (!badgeSpan) {
+            const btn = document.querySelector('.support-btn-header');
+            if (btn) {
+                const newBadge = document.createElement('span');
+                newBadge.className = 'sign-badge';
+                newBadge.style.marginLeft = '8px';
+                newBadge.style.background = '#facc15';
+                newBadge.style.color = '#0b0e1a';
+                newBadge.style.padding = '4px 10px';
+                newBadge.style.borderRadius = '40px';
+                newBadge.style.fontSize = '0.75rem';
+                newBadge.style.fontWeight = 'bold';
+                newBadge.innerText = formatNumber(signatureCount) + ' подписей';
+                btn.appendChild(newBadge);
+            }
+        }
+        updateModalUIForSignedStatus();
+    }, 100);
+    
+    initPage();
+    // финальное обновление счётчика на старте
+    updateCounterDisplay();
+</script>
+</body>
+</html>

@@ -334,7 +334,7 @@
 <header class="header">
     <div class="container header-content">
         <div class="logo">
-            <h1><i class="fas fa-gamepad"></i> EduCyber</h1>
+            <h1><i class=</i>Cyber  School</h1>
             <p>школьный киберспорт · дисциплина · прогресс</p>
         </div>
         <button class="support-btn-header" id="openPetitionBtn">
@@ -417,9 +417,7 @@
                         <li style="margin: 12px 0;"><i class="fas fa-check-circle" style="color:#f97316;"></i> Снижение стресса и социализация подростков</li>
                         <li style="margin: 12px 0;"><i class="fas fa-check-circle" style="color:#f97316;"></i> Развитие навыков XXI века: IT, коммуникация, лидерство</li>
                         <li style="margin: 12px 0;"><i class="fas fa-check-circle" style="color:#f97316;"></i> Школьные киберлиги уже в Финляндии, США, Южной Корее — дают результат</li>
-                        <li style="margin: 12px 0;"><i class="fas fa-check-circle" style="color:#f97316;"></i> Возможность участия даже для тех, кто не силен в классическом спорте</li>
-                    </ul>
-                </div>
+                        <li style="margin: 12px 0;"><i class="fas fa-check-
                 <div style="text-align: center;">
                     <i class="fas fa-users-class" style="font-size: 5rem; opacity: 0.7;"></i>
                 </div>
@@ -430,8 +428,8 @@
 
 <footer>
     <div class="container">
-        <p>© 2025 Инициатива «Киберспорт в школы» | Давайте вместе сделаем образование современным</p>
-        <p style="margin-top: 8px;"><i class="fas fa-heart" style="color:#f97316;"></i> Поддержите движение за школьные кибертурниры</p>
+        <p>© 2026 Инициатива «Киберспорт в школы» | Давайте вместе сделаем образование современным</p>
+        <p style="margin-top: 11px;"><i class="fas fa-heart" style="color:#f97316;"></i> Поддержите движение за школьные кибертурниры</p>
     </div>
 </footer>
 
@@ -459,7 +457,7 @@
     const STORAGE_KEY = 'cyberPetitionSigned';
     const COUNT_KEY = 'petitionSignaturesCount';
 
-    // Функция для инициализации счётчика подписей (стартуем с 1249, как уже несколько сторонников, но реально стоит начать с реалистичного числа)
+    // Функция для инициализации счётчика подписей (стартуем с 201, как уже несколько сторонников, но реально стоит начать с реалистичного числа)
     let signatureCount = 1249;  // начальное количество человек, поддержавших идею (символический старт)
     
     // Загружаем сохранённое количество подписей
@@ -468,7 +466,7 @@
         if (saved !== null && !isNaN(parseInt(saved))) {
             signatureCount = parseInt(saved);
         } else {
-            // если в хранилище нет, то оставляем 1249, но сохраним
+            // если в хранилище нет, то оставляем 201, но сохраним
             localStorage.setItem(COUNT_KEY, signatureCount.toString());
         }
         updateCounterDisplay();
@@ -696,4 +694,4 @@
     updateCounterDisplay();
 </script>
 </body>
-</html>
+</html> 

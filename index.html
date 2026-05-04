@@ -22,11 +22,6 @@
             scroll-behavior: smooth;
         }
 
-        /* градиентные акценты */
-        .gradient-bg {
-            background: radial-gradient(circle at 10% 20%, rgba(30, 40, 70, 0.6), rgba(5, 8, 20, 0.95));
-        }
-
         .container {
             max-width: 1280px;
             margin: 0 auto;
@@ -203,6 +198,69 @@
             color: #b9c2dd;
         }
 
+        /* Аргументы педагогов - рамка */
+        .teachers-box {
+            background: linear-gradient(120deg, #0f172a, #030617);
+            border-radius: 36px;
+            padding: 32px 24px;
+            margin: 40px 0;
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .teachers-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .teachers-text {
+            flex: 2;
+            min-width: 250px;
+        }
+
+        .teachers-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .teachers-text h3 i {
+            color: #f97316;
+        }
+
+        .teachers-list {
+            list-style: none;
+        }
+
+        .teachers-list li {
+            margin: 14px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .teachers-list li i {
+            color: #f97316;
+            font-size: 1.2rem;
+            width: 24px;
+        }
+
+        .teachers-icon {
+            flex: 0 0 auto;
+            text-align: center;
+        }
+
+        .teachers-icon i {
+            font-size: 5rem;
+            opacity: 0.7;
+            color: #f97316;
+        }
+
         /* петиция модальное окно */
         .modal-overlay {
             position: fixed;
@@ -321,6 +379,16 @@
                 width: 100%;
                 max-width: 280px;
             }
+            .teachers-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .teachers-list li {
+                justify-content: center;
+            }
+            .teachers-text h3 {
+                justify-content: center;
+            }
         }
 
         button {
@@ -334,7 +402,7 @@
 <header class="header">
     <div class="container header-content">
         <div class="logo">
-            <h1><i class=</i>Cyber  School</h1>
+            <h1><i class="fas fa-gamepad"></i> Cyber School</h1>
             <p>школьный киберспорт · дисциплина · прогресс</p>
         </div>
         <button class="support-btn-header" id="openPetitionBtn">
@@ -408,18 +476,19 @@
             <p style="text-align: center; margin-top: 30px; font-style: italic; color: #b9c2dd;">✅ Школьные турниры по этим играм помогают раскрыть таланты, улучшить успеваемость через мотивацию и сформировать здоровую геймерскую культуру.</p>
         </div>
 
-        <!-- Доп. инфоблок -->
-        <div style="background: linear-gradient(120deg, #0f172a, #030617); border-radius: 36px; padding: 32px 24px; margin: 40px 0;">
-            <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between;">
-                <div style="flex: 1;">
-                    <h3 style="font-size: 1.8rem;"><i class="fas fa-chalkboard-teacher"></i> Аргументы педагогов</h3>
-                    <ul style="margin-top: 16px; list-style: none;">
-                        <li style="margin: 12px 0;"><i class="fas fa-check-circle" style="color:#f97316;"></i> Снижение стресса и социализация подростков</li>
-                        <li style="margin: 12px 0;"><i class="fas fa-check-circle" style="color:#f97316;"></i> Развитие навыков XXI века: IT, коммуникация, лидерство</li>
-                        <li style="margin: 12px 0;"><i class="fas fa-check-circle" style="color:#f97316;"></i> Школьные киберлиги уже в Финляндии, США, Южной Корее — дают результат</li>
-                        <li style="margin: 12px 0;"><i class="fas fa-check-
-                <div style="text-align: center;">
-                    <i class="fas fa-users-class" style="font-size: 5rem; opacity: 0.7;"></i>
+        <!-- Аргументы педагогов (3 аргумента, без 4-го) -->
+        <div class="teachers-box">
+            <div class="teachers-content">
+                <div class="teachers-text">
+                    <h3><i class="fas fa-chalkboard-teacher"></i> Аргументы педагогов</h3>
+                    <ul class="teachers-list">
+                        <li><i class="fas fa-check-circle"></i> Снижение стресса и социализация подростков</li>
+                        <li><i class="fas fa-check-circle"></i> Развитие навыков XXI века: IT, коммуникация, лидерство</li>
+                        <li><i class="fas fa-check-circle"></i> Школьные киберлиги уже в Финляндии, США, Южной Корее — дают результат</li>
+                    </ul>
+                </div>
+                <div class="teachers-icon">
+                    <i class="fas fa-users-class"></i>
                 </div>
             </div>
         </div>
@@ -457,8 +526,7 @@
     const STORAGE_KEY = 'cyberPetitionSigned';
     const COUNT_KEY = 'petitionSignaturesCount';
 
-    // Функция для инициализации счётчика подписей (стартуем с 201, как уже несколько сторонников, но реально стоит начать с реалистичного числа)
-    let signatureCount = 1249;  // начальное количество человек, поддержавших идею (символический старт)
+    let signatureCount = 1249;  // начальное количество человек
     
     // Загружаем сохранённое количество подписей
     function loadSignatureCount() {
@@ -466,17 +534,16 @@
         if (saved !== null && !isNaN(parseInt(saved))) {
             signatureCount = parseInt(saved);
         } else {
-            // если в хранилище нет, то оставляем 201, но сохраним
             localStorage.setItem(COUNT_KEY, signatureCount.toString());
         }
         updateCounterDisplay();
     }
     
-    // Обновить отображение счётчика в модалке и везде где используется (в модалке)
     function updateCounterDisplay() {
         const counterSpan = document.getElementById('signatureCounter');
         if (counterSpan) counterSpan.innerText = formatNumber(signatureCount) + ' поддержавших';
-        // также если кнопка где-то есть хедер, но основной счётчик именно в модалке, но дополнительно можно и на главной отобразить
+        const badge = document.querySelector('.sign-badge');
+        if (badge) badge.innerText = formatNumber(signatureCount) + ' подписей';
     }
     
     function formatNumber(num) {
@@ -485,12 +552,10 @@
         return num.toString();
     }
     
-    // Проверка, подписал ли текущий пользователь
     function isUserSigned() {
         return localStorage.getItem(STORAGE_KEY) === 'true';
     }
     
-    // Сохранить статус подписи для пользователя
     function setUserSigned(signed) {
         if (signed) {
             localStorage.setItem(STORAGE_KEY, 'true');
@@ -499,7 +564,6 @@
         }
     }
     
-    // Обновить UI модалки в зависимости от того подписал ли пользователь
     function updateModalUIForSignedStatus() {
         const signed = isUserSigned();
         const signBtn = document.getElementById('confirmSignBtn');
@@ -507,54 +571,39 @@
         const alreadyDiv = document.getElementById('alreadyMessage');
         
         if (signed) {
-            if (signBtn) signBtn.disabled = true;
-            if (signBtn) signBtn.style.opacity = '0.6';
-            if (signBtn) signBtn.style.cursor = 'not-allowed';
+            if (signBtn) { signBtn.disabled = true; signBtn.style.opacity = '0.6'; signBtn.style.cursor = 'not-allowed'; }
             if (msgDiv) msgDiv.innerHTML = '<i class="fas fa-check-circle"></i> Вы уже поддержали петицию! Спасибо за ваш голос.';
             if (alreadyDiv) alreadyDiv.innerHTML = '🙌 Вы среди тех, кто помогает внедрить киберспорт в школы.';
         } else {
-            if (signBtn) signBtn.disabled = false;
-            if (signBtn) signBtn.style.opacity = '1';
-            if (signBtn) signBtn.style.cursor = 'pointer';
+            if (signBtn) { signBtn.disabled = false; signBtn.style.opacity = '1'; signBtn.style.cursor = 'pointer'; }
             if (msgDiv) msgDiv.innerHTML = '';
             if (alreadyDiv) alreadyDiv.innerHTML = 'Подпишите петицию, чтобы мы могли передать инициативу в Министерство образования.';
         }
     }
     
-    // Функция подписания (увеличить счётчик и пометить пользователя)
     function signPetition() {
         if (isUserSigned()) {
-            // уже подписал, нельзя повторно
             alert('Вы уже поддержали идею! Спасибо за вашу гражданскую позицию 🙏');
             return false;
         }
         
-        // Увеличиваем счётчик
         signatureCount++;
-        // Сохраняем в localStorage новое значение для всех
         localStorage.setItem(COUNT_KEY, signatureCount.toString());
-        // Помечаем, что этот пользователь подписал
         setUserSigned(true);
         
-        // Обновить интерфейс
         updateCounterDisplay();
         updateModalUIForSignedStatus();
         
-        // показать уведомление
         alert('✨ Вы поддержали инициативу! Теперь петицию подписали ' + formatNumber(signatureCount) + ' человек. Вместе мы изменим школьную систему!');
-        
-        // дополнительно для хедера — можем показать всплывашку, но всё ок
         return true;
     }
     
-    // Ручное управление модальным окном
     const modal = document.getElementById('petitionModal');
     const openBtn = document.getElementById('openPetitionBtn');
     const closeBtn = document.getElementById('closeModalBtn');
     const confirmBtn = document.getElementById('confirmSignBtn');
     
     function openModal() {
-        // При открытии обновляем статус UI (вдруг изменилось через другой вкладки, но localStorage общий)
         updateModalUIForSignedStatus();
         updateCounterDisplay();
         modal.classList.add('active');
@@ -566,36 +615,24 @@
         document.body.style.overflow = '';
     }
     
-    openBtn.addEventListener('click', openModal);
-    closeBtn.addEventListener('click', closeModal);
+    if (openBtn) openBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
     
-    // Клик по оверлею для закрытия
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-    });
-    
-    // Подписание при нажатии на кнопку
-    if (confirmBtn) {
-        confirmBtn.addEventListener('click', (e) => {
-            signPetition();
-            // Не закрываем модалку автоматически, чтобы человек увидел, что подпись учтена.
-            // Но можно оставить открытым, или через пару секунд? Оставим открытым и обновим текст.
-            // Дополнительно показываем, что уже подписал.
-            setTimeout(() => {
-                // если пользователь захочет — закроет сам
-            }, 100);
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
         });
     }
     
-    // При загрузке страницы инициализируем
-    loadSignatureCount();
+    if (confirmBtn) {
+        confirmBtn.addEventListener('click', (e) => {
+            signPetition();
+            updateModalUIForSignedStatus();
+        });
+    }
     
-    // Проверяем, не подписал ли пользователь ранее, и обновляем UI модалки, когда она откроется
-    // Также обновляем счетчик
-    function initPage() {
-        loadSignatureCount();
-        // дополнительно добавить возможность отображения счётчика на самой странице где-нибудь, но по заданию главное в петиции
-        // создадим мини-виджет с количеством подписей в хедере или в конце? Добавим для наглядности маленький бейдж.
+    // Добавляем бейдж с подписями на кнопку
+    function initBadge() {
         const headerBtn = document.querySelector('.support-btn-header');
         if (headerBtn && !document.querySelector('.sign-badge')) {
             const badgeSpan = document.createElement('span');
@@ -609,89 +646,12 @@
             badgeSpan.style.fontWeight = 'bold';
             badgeSpan.innerText = formatNumber(signatureCount) + ' подписей';
             headerBtn.appendChild(badgeSpan);
-            
-            // обновляем бейдж при изменении счётчика
-            const updateBadge = () => {
-                if (badgeSpan) badgeSpan.innerText = formatNumber(signatureCount) + ' подписей';
-            };
-            // сохраним ссылку на функцию обновления
-            window.updateExtraBadge = updateBadge;
         }
     }
     
-    // Изменяем updateCounterDisplay, чтобы обновлять также бейдж если есть
-    const originalUpdateDisplay = updateCounterDisplay;
-    window.updateCounterDisplay = function() {
-        originalUpdateDisplay();
-        const badge = document.querySelector('.sign-badge');
-        if (badge) badge.innerText = formatNumber(signatureCount) + ' подписей';
-    };
-    updateCounterDisplay = window.updateCounterDisplay;
-    
-    // подменяем глобально вызов updateCounterDisplay
-    const superUpdate = function() {
-        originalUpdateDisplay();
-        const badge = document.querySelector('.sign-badge');
-        if (badge) badge.innerText = formatNumber(signatureCount) + ' подписей';
-    };
-    window.updateCounterDisplay = superUpdate;
-    
-    // переопределяем оригинальную функцию, чтобы она использовала супер
-    window.updateCounterDisplay();
-    
-    // и переопределим signPetition чтобы при вызове обновлялся бейдж
-    const originalSign = signPetition;
-    window.signPetition = function() {
-        const res = originalSign();
-        if (res !== false) {
-            if (window.updateCounterDisplay) window.updateCounterDisplay();
-        }
-        return res;
-    };
-    signPetition = window.signPetition;
-    
-    // переназначим для обработчика кнопки
-    if (confirmBtn) {
-        // удаляем старый listener и навешиваем заново, чтобы точно работало с обновлением бейджа
-        const newConfirm = confirmBtn.cloneNode(true);
-        confirmBtn.parentNode.replaceChild(newConfirm, confirmBtn);
-        window.confirmBtn = newConfirm;
-        newConfirm.addEventListener('click', (e) => {
-            if (!isUserSigned()) {
-                signPetition();
-                if (window.updateCounterDisplay) window.updateCounterDisplay();
-                updateModalUIForSignedStatus();
-            } else {
-                alert('Вы уже поддержали петицию!');
-            }
-        });
-    }
-    
-    // небольшая инициализация бейджа после загрузки
-    setTimeout(() => {
-        const badgeSpan = document.querySelector('.sign-badge');
-        if (!badgeSpan) {
-            const btn = document.querySelector('.support-btn-header');
-            if (btn) {
-                const newBadge = document.createElement('span');
-                newBadge.className = 'sign-badge';
-                newBadge.style.marginLeft = '8px';
-                newBadge.style.background = '#facc15';
-                newBadge.style.color = '#0b0e1a';
-                newBadge.style.padding = '4px 10px';
-                newBadge.style.borderRadius = '40px';
-                newBadge.style.fontSize = '0.75rem';
-                newBadge.style.fontWeight = 'bold';
-                newBadge.innerText = formatNumber(signatureCount) + ' подписей';
-                btn.appendChild(newBadge);
-            }
-        }
-        updateModalUIForSignedStatus();
-    }, 100);
-    
-    initPage();
-    // финальное обновление счётчика на старте
-    updateCounterDisplay();
+    loadSignatureCount();
+    initBadge();
+    updateModalUIForSignedStatus();
 </script>
 </body>
-</html> 
+</html>
